@@ -11,6 +11,13 @@ if (clientInstance === 'ms') {
     document.head.appendChild(script);
 }
 
+else if (clientInstance === 'aot') {
+    var url = 'https://abin-aot.github.io/nr-ai-form/client-scripts/client.js' // url to aot's javascript
+    var script = document.createElement("script");
+    script.src = url;
+    document.head.appendChild(script);
+}
+
 else {
     /**
      * client integration
@@ -23,7 +30,7 @@ else {
     // --------- local config:
     const env = 'dev'; // (use `dev` for Posse)
     const apiUrl = 'https://nr-ai-form-dev-api-fd-atambqdccsagafbt.a01.azurefd.net/api/chat'
-    const cacheExpire = 1800000;  // 1  minute in milliseconds
+    const cacheExpire = 1800000;  // 3  minutes in milliseconds
 
     // context mappings
     const mapping = env === 'local' ? {
