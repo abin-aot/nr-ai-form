@@ -48,10 +48,10 @@
                     if (pageToAssist()) {
 
                         captureForm(); // capture current state of form and save to local storage
-
+                        initChatbot();
                         // if not a popup
                         if (!window.opener) {
-                            initChatbot(); // initialize chatbot UI
+                            //initChatbot(); // initialize chatbot UI
                             removeExpiredStorage(); // remove stale cache in browser local storage if older than `cacheExpire`
 
                             // IMPORTANT: fix this
