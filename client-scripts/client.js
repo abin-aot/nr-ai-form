@@ -459,7 +459,7 @@
          */
         function pageToAssist() {
             let titleSpan, validTitleText;
-            validTitles = ['Water Licence Application', 'Sample Form','Add a Purpose'];
+            validTitles = ['Water Licence Application (100483734)', 'Sample Form','Add a Purpose'];
             if (env === 'dev') {
                 titleSpan = document.querySelector('td.title div#cphTitleBand_pnlTitleBand span.title');
                 validTitleText = 'Water Licence Application';
