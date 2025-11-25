@@ -459,6 +459,7 @@
          */
         function pageToAssist() {
             let titleSpan, validTitleText;
+            validTitles = ['Water Licence Application', 'Sample Form','Add a Purpose'];
             if (env === 'dev') {
                 titleSpan = document.querySelector('td.title div#cphTitleBand_pnlTitleBand span.title');
                 validTitleText = 'Water Licence Application';
@@ -466,7 +467,7 @@
                 titleSpan = document.querySelector('.page-title');
                 validTitleText = 'Sample Form';
             }
-            return titleSpan && titleSpan.textContent.includes(validTitleText);
+            return titleSpan && validTitles.includes(titleSpan.textContent.trim());
         }
 
         /**
