@@ -123,10 +123,10 @@
           
             // Simple Q&A object with string keys and values
             const questionsAndAnswers = {
-            "Whats a BCEID and Why should I use it?": "A BCeID (British Columbia electronic ID) is a free, secure online authentication service that provides individuals, businesses, and organizations with a single user ID and password to securely access numerous online services offered by the BC government. It simplifies the login process and enhances security for users accessing government services online like Water Permit Applications. </br> For this application you can apply without BCeID, Please click on Apply without BCeID.",
-            "I dont have a BCeID account, Can I still apply for Water Permit?": "Yes, you can still apply for a Water Permit without a BCeID account. </br> Please click on Apply without BCeID.",
+            "Whats a BCEID and Why should I use it?": "A BCeID (British Columbia electronic ID) is a free, secure online authentication service that provides individuals, businesses, and organizations with a single user ID and password to securely access numerous online services offered by the BC government. It simplifies the login process and enhances security for users accessing government services online like Water Permit Applications.\n For this application you can apply without BCeID, Please click on Apply without BCeID.",
+            "I dont have a BCeID account, Can I still apply for Water Permit?": "Yes, you can still apply for a Water Permit without a BCeID account. \n Please click on Apply without BCeID.",
             "What is North Coast Transmission Line?": "For the purposes of this POC we would answer No to all questions. But, The North Coast Transmission Line (NCTL) is a major electrical transmission project in British Columbia, Canada. It involves the construction of a high-voltage transmission line that spans approximately 335 kilometers, connecting the Northwest Transmission Line near Terrace to the existing transmission system near Prince Rupert. The NCTL is designed to enhance the reliability and capacity of the electrical grid in the region, supporting economic development and providing a stable power supply to communities along the north coast.",
-            "I'm a farmer, I need water to grow crops - What kind of information is required?": "As a farmer applying for a water permit to grow crops, you will need to provide specific information about your agricultural activities and water usage. This may include details about the type of crops you plan to grow, the size of your farm, the irrigation methods you intend to use, and the estimated volume of water required for your agricultural operations. Additionally, you may need to provide information about your farm's location, soil type, and any existing water sources on your property. It's important to accurately describe your water needs to ensure compliance with regulations and sustainable water management practices. </br> For more detailed guidance, please refer to the Water Licence Application Guide for Agricultural Use on the FrontCounter BC website. </br> Please click on Apply without BCeID.",
+            "I'm a farmer, I need water to grow crops - What kind of information is required?": "As a farmer applying for a water permit to grow crops, you will need to provide specific information about your agricultural activities and water usage. This may include details about the type of crops you plan to grow, the size of your farm, the irrigation methods you intend to use, and the estimated volume of water required for your agricultural operations. Additionally, you may need to provide information about your farm's location, soil type, and any existing water sources on your property. It's important to accurately describe your water needs to ensure compliance with regulations and sustainable water management practices. \n For more detailed guidance, please refer to the Water Licence Application Guide for Agricultural Use on the FrontCounter BC website. \n Please click on Apply without BCeID.",
             "I'm a federal government employee, working with Marine research in Comox valley ": "fed-employeecase",
             }; 
             // Check if the userMessage matches any question in the object
@@ -144,8 +144,7 @@
         async function sendMessage(userMessage) {
             document.getElementById('wp-chat-input').value = '';
             document.getElementById('wp-chat-send-btn').classList.remove('wp-chat-send-ready');
-            displayMessage('user', userMessage);
-            console.log('AA user message:', userMessage);
+            displayMessage('user', userMessage);           
             showTypingIndicator();
 
             try {
