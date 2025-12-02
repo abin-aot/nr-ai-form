@@ -171,28 +171,25 @@
                         conversation_history: conversation_history
                     };
                 }
-                
-                
+                // send API request
+                apiResponse = await sendData(userMessage, data);
 
                 // override answer for specific questions
-                const overriddenAnswer = overrideQuestionAnswering(userMessage); 
-                
-                if(overriddenAnswer === undefined || overriddenAnswer === null || overriddenAnswer === '') {
-                    // send API request
-                    apiResponse = await sendData(userMessage, data);
+                const overriddenAnswer = overrideQuestionAnswering(userMessage);
+                apiResponse.response_message = overriddenAnswer || apiResponse.response_message;
+                if (overriddenAnswer == null || overriddenAnswer == undefined || overriddenAnswer == '') { 
+                    // show response message 
+                    displayMessage('assistant', apiResponse.response_message)
+                    hideTypingIndicator();
+                    // populate the form if input values were found
+                    populateForm(apiResponse);
                 }
                 else {
-                    //TODO: WAIT!
-                    setTimeout(hideTypingIndicator, 3000); // simulate typing delay
-                    apiResponse.response_message = overriddenAnswer;
+                                
+                    displayMessage('assistant', overriddenAnswer)
+                    hideTypingIndicator();
+
                 }
-                 
-                // show response message 
-                displayMessage('assistant', apiResponse.response_message)
-                hideTypingIndicator();
-                // populate the form if input values were found
-                populateForm(apiResponse);
-               
 
             } catch (error) {
                 hideTypingIndicator();
