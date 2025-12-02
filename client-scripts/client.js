@@ -190,8 +190,8 @@
                       
                     if (overriddenAnswer === 'fed-employeecase') {
                         const categories = document.querySelector('[data-id="V1FeeExemptionCategory"]');
-                        categories[0].value = 'Federal Government';
-                        categories[0].dispatchEvent(new Event('change'));
+                        categories.selectedIndex = 2;
+                        categories.dispatchEvent(new Event('change'));
                     }
                    
                     displayMessage('assistant', overriddenAnswer)
