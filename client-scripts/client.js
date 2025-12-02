@@ -191,7 +191,11 @@
                     if (overriddenAnswer === 'fed-employeecase') {
                         const categories = document.querySelector('[data-id="V1FeeExemptionCategory"]');
                         categories.selectedIndex = 2;
-                        categories.dispatchEvent(new Event('change'));
+
+                        const textfeeexception = document.querySelector('[data-id="V1FeeExemptionSupportingInfo"]');
+                        textfeeexception.value = "I am a federal government employee, working for CRA";
+                        overriddenAnswer = "As a federal government employee, your application has been updated to reflect your fee exemption status. The 'Fee Exemption Category' has been set to 'Federal Government Employee', and the supporting information has been noted accordingly. Please review the changes to ensure everything is accurate before proceeding with your application.";
+                                               
                     }
                    
                     displayMessage('assistant', overriddenAnswer)
