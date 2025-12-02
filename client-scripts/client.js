@@ -128,7 +128,7 @@
             "I dont have a BCeID account, Can I still apply for Water Permit?": `Yes, you can still apply for a Water Permit without a BCeID account. \n Please click on Apply without BCeID.`,
             "What is North Coast Transmission Line?": `For the purposes of this POC we would answer No to all questions. But, The North Coast Transmission Line (NCTL) is a major electrical transmission project in British Columbia, Canada. It involves the construction of a high-voltage transmission line that spans approximately 335 kilometers, connecting the Northwest Transmission Line near Terrace to the existing transmission system near Prince Rupert. The NCTL is designed to enhance the reliability and capacity of the electrical grid in the region, supporting economic development and providing a stable power supply to communities along the north coast.`,
             "I'm a farmer, I need water to grow crops - What kind of information is required?": `As a farmer applying for a water permit to grow crops, you will need to provide specific information about your agricultural activities and water usage. This may include details about the type of crops you plan to grow, the size of your farm, the irrigation methods you intend to use, and the estimated volume of water required for your agricultural operations. Additionally, you may need to provide information about your farm's location, soil type, and any existing water sources on your property. It's important to accurately describe your water needs to ensure compliance with regulations and sustainable water management practices. \n For more detailed guidance, please refer to the Water Licence Application Guide for Agricultural Use on the FrontCounter BC website. \n Please click on Apply without BCeID.`,
-            "I'm a federal government employee, working with Marine research in Comox valley ": "fed-employeecase",
+            "I'm a federal government employee, working with Marine research in Comox valley": "fed-employeecase",
             "Am I eligible for a water license ?": `Just let me know if any of these apply to you: \n
                                                         Are you the owner or entitled of possession of land where the water will be used? \n
                                                         Are you a municipality, regional district, improvement or development district, or water user's community? \n
@@ -200,7 +200,7 @@
 
                         const textfeeexception = document.querySelector('[data-id="V1FeeExemptionSupportingInfo"]');
                         textfeeexception.value = "I am a federal government employee, working with Marine research in Comox valley";
-                        overriddenAnswer = "As a federal government employee, your application has been updated to reflect your fee exemption status. The 'Fee Exemption Category' has been set to 'Federal Government Employee', and the supporting information has been noted accordingly. Please review the changes to ensure everything is accurate before proceeding with your application.";
+                        overriddenAnswer = "As a federal government employee, your application has been updated to reflect your fee exemption status. Please review the changes to ensure everything is accurate before proceeding with your application.";
                                                
                     }
                    
