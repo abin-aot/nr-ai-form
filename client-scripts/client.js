@@ -176,7 +176,7 @@
 
                 // override answer for specific questions
                 const overriddenAnswer = overrideQuestionAnswering(userMessage); 
-                var apiResponse;
+                
                 if(overriddenAnswer === undefined || overriddenAnswer === null || overriddenAnswer === '') {
                     // send API request
                     apiResponse = await sendData(userMessage, data);
