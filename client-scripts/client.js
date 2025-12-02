@@ -48,10 +48,10 @@
                     if (pageToAssist()) {
 
                         captureForm(); // capture current state of form and save to local storage
-                        initChatbot();
+
                         // if not a popup
                         if (!window.opener) {
-                            //initChatbot(); // initialize chatbot UI
+                            initChatbot(); // initialize chatbot UI
                             removeExpiredStorage(); // remove stale cache in browser local storage if older than `cacheExpire`
 
                             // IMPORTANT: fix this
@@ -129,6 +129,7 @@
             document.getElementById('wp-chat-input').value = '';
             document.getElementById('wp-chat-send-btn').classList.remove('wp-chat-send-ready');
             displayMessage('user', userMessage);
+            console.log('AA user message:', userMessage);
             showTypingIndicator();
 
             try {
@@ -459,7 +460,6 @@
          */
         function pageToAssist() {
             let titleSpan, validTitleText;
-            validTitles = ['Water Licence Application (100483734)', 'Sample Form','Add a Purpose'];
             if (env === 'dev') {
                 titleSpan = document.querySelector('td.title div#cphTitleBand_pnlTitleBand span.title');
                 validTitleText = 'Water Licence Application';
@@ -467,7 +467,7 @@
                 titleSpan = document.querySelector('.page-title');
                 validTitleText = 'Sample Form';
             }
-            return titleSpan && validTitles.includes(titleSpan.textContent.trim());
+            return titleSpan && titleSpan.textContent.includes(validTitleText);
         }
 
         /**
