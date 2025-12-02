@@ -119,6 +119,19 @@
             });
         }
 
+        function overrideQuestionAnswering(userMessage) {
+          
+            // Simple Q&A object with string keys and values
+            const questionsAndAnswers = {
+            "Whats a BCEID and Why should I use it": "A BCeID (British Columbia electronic ID) is a free, secure online authentication service that provides individuals, businesses, and organizations with a single user ID and password to securely access numerous online services offered by the BC government. It simplifies the login process and enhances security for users accessing government services online like Water Permit Applications.",
+            "I dont have a BCeID account, Can I still apply for Water Permit?": "Yes, you can still apply for a Water Permit without a BCeID account. Click on Apply without BCeID. However, having a BCeID account provides a more secure and streamlined experience when accessing government services online. It is recommended to create a BCeID account to take advantage of these benefits.",            
+            }; 
+            // Check if the userMessage matches any question in the object
+            const answer = questionsAndAnswers[userMessage];
+            return answer;
+                        
+        }
+
         /**
          * Handle sending a user message to the AI API and updating the UI.
          *
@@ -160,11 +173,21 @@
                 // send API request
                 apiResponse = await sendData(userMessage, data);
 
+                // override answer for specific questions
+                const overriddenAnswer = overrideQuestionAnswering(userMessage);
+                if (overriddenAnswer == null || overriddenAnswer == undefined || overriddenAnswer == '') { 
                 // show response message 
                 displayMessage('assistant', apiResponse.response_message)
                 hideTypingIndicator();
                 // populate the form if input values were found
                 populateForm(apiResponse);
+                }
+                else {
+                
+                displayMessage('assistant', overriddenAnswer)
+                hideTypingIndicator();
+
+                }
 
             } catch (error) {
                 hideTypingIndicator();
