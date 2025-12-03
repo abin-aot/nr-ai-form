@@ -130,20 +130,28 @@
             "I dont have a BCeID account, Can I still apply for Water Permit ?": `Yes, you can still apply for a Water Permit without a BCeID account. \n Please click on Apply without BCeID.`,
             "What should I do here ?":"Please follow instructions to validate that you are a human.",
             "What is North Coast Transmission Line ?": `For the purposes of this POC we would answer No to all questions. But, The North Coast Transmission Line (NCTL) is a major electrical transmission project in British Columbia, Canada. It involves the construction of a high-voltage transmission line that spans approximately 335 kilometers, connecting the Northwest Transmission Line near Terrace to the existing transmission system near Prince Rupert. The NCTL is designed to enhance the reliability and capacity of the electrical grid in the region, supporting economic development and providing a stable power supply to communities along the north coast.`,
-            "I'm a farmer, I need water to grow crops or blueberries - What kind of information is required ?": `As a farmer applying for a water permit to grow crops, you will need to provide specific information about your agricultural activities and water usage. This may include details about the type of crops you plan to grow, the size of your farm, the irrigation methods you intend to use, and the estimated volume of water required for your agricultural operations. Additionally, you may need to provide information about your farm's location, soil type, and any existing water sources on your property. It's important to accurately describe your water needs to ensure compliance with regulations and sustainable water management practices. \n For more detailed guidance, please refer to the Water Licence Application Guide for Agricultural Use on the FrontCounter BC website. \n Please click on Apply without BCeID to continue.`,
-            "I have fee exemption":"fee-exemption-yes",
-            "I'm a federal government employee, working with Marine research in Comox valley": "fed-employeecase",
+            "I'm a farmer, I need water to grow crops or blueberries - What kind of information is required ?": `As a farmer applying for a water permit to grow crops, you may include details  of about the type of crops you plan to grow, farm size, irrigation methods to use, and the volume of water required. For more detailed guidance, please refer to the Water Licence Application Guide for Agricultural Use on the FrontCounter BC website.\n Please click on Apply without BCeID to continue.`,
+            "I am applying to use water on treaty lands, Am I eligible for fee exemption ?":"fee-exemption-yes",
+            "I live in Komok's First Nation band, and need to use my land for agriculture": "fed-employeecase",
             "How will I know if I have an existing water licence ?" : "Since you’re applying for the first time, I’m assuming the answer is no.",
             "Yes I am applying for first time, I don't have any existing water licence":"select-no-existing-license",
             "I'm probably using ground water": "select-ground-water",
-            "I would like to know the approximate cost for  irrigation services on 2 ha of land based on an estimated usage of 10 m³ of water per day in summer months": `It will cost approximately around $250.00. Shall I add this information to your application form?`,
+            "I want to irrigate 2 hectares of blueberries on my land in Comox valley. I am planning to pump water from a nearby well, and use sprinklers and drip irrigation, from June to September": `Suggested Pre-fill: \n
+                                                                                                                                                                            Please review and update any details if needed:\n
+                                                                                                                                                                            - Purpose : Irrigation\n
+                                                                                                                                                                            - Sub-purpose: Irrigation\n
+                                                                                                                                                                            - Seasonal use : Yes\n
+                                                                                                                                                                            - Month : June - September\n
+                                                                                                                                                                            - Total Annual Quantity : 10 m3/year\n
+                                                                                                                                                                            - Area to be irrigated : 2 ha\n
+                                                                                                                                                                            - Approximate Cost : 250 CAD\n
+                                                                                                                                                                            Shall I add this information to your application form?`,
             "Yes, please add this calculation to this application form": "add-purpose-calc",
             "Am I eligible for a water licence ?": `Just let me know if any of these apply to you: \n
-                                                        Are you the owner or entitled of possession of land where the water will be used? \n
-                                                        Are you a municipality, regional district, improvement or development district, or water user's community? \n
-                                                        Do you represent the BC or Canadian government, a commission or board managing Crown land, a water district, or BC Hydro? \n
-                                                        Or are you applying as an agent for someone who qualifies? \n \n
-                                                        If any of these sound like you, just say I’m eligible and I can fill in the form for you `
+                                                        Are you the owner or entitled of possession of land ? \n
+                                                        Are you a municipality, regional district, or development district? \n
+                                                        Do you represent the BC or Canadian government,  or BC Hydro? \n
+                                                        If any of these sound like you, just say I’m eligible`
             }; 
             // Check if the userMessage matches any question in the object
             const answer = questionsAndAnswers[userMessage];
@@ -199,13 +207,14 @@
                         conversation_history: conversation_history
                     };
                 }
-                // send API request
-                apiResponse = await sendData(userMessage, data);
+              
 
                 // override answer for specific questions
                 let overriddenAnswer = overrideQuestionAnswering(userMessage);
                 //apiResponse.response_message = overriddenAnswer || apiResponse.response_message;
                 if (overriddenAnswer == null || overriddenAnswer == undefined || overriddenAnswer == '') { 
+                    // send API request
+                    apiResponse = await sendData(userMessage, data);
                     // show response message 
                     displayMessage('assistant', apiResponse.response_message)
                     hideTypingIndicator();
@@ -241,11 +250,11 @@
 
                     if (overriddenAnswer === 'fed-employeecase') {
                         const categories = document.querySelector('[data-id="V1FeeExemptionCategory"]');
-                        categories.selectedIndex = 2;
+                        categories.selectedIndex = 3;
 
                         const textfeeexception = document.querySelector('[data-id="V1FeeExemptionSupportingInfo"]');
-                        textfeeexception.value = "I am a federal government employee, working with Marine research in Comox valley";
-                        overriddenAnswer = "As a federal government employee, your application has been updated to reflect your fee exemption status. Please review the changes to ensure everything is accurate before proceeding with your application.";
+                        textfeeexception.value = "I live in Komok's First Nation band, and need to use my land for agriculture";
+                        overriddenAnswer = "Your application has been updated to reflect your fee exemption status. Please review the changes to ensure everything is accurate before proceeding with your application.";
                                                
                     }
 
@@ -968,8 +977,8 @@
                     position: fixed;
                     bottom: 20px;
                     right: 20px;
-                    width: 420px;
-                    height: 650px;
+                    width: 450px;
+                    height: 750px;
                     max-width: calc(100vw - 40px);
                     max-height: calc(100vh - 40px);
                     z-index: 99999;
