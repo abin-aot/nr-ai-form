@@ -131,12 +131,13 @@
             "What should I do here ?":"Please follow instructions to validate that you are a human.",
             "What is North Coast Transmission Line ?": `For the purposes of this POC we would answer No to all questions. But, The North Coast Transmission Line (NCTL) is a major electrical transmission project in British Columbia, Canada. It involves the construction of a high-voltage transmission line that spans approximately 335 kilometers, connecting the Northwest Transmission Line near Terrace to the existing transmission system near Prince Rupert. The NCTL is designed to enhance the reliability and capacity of the electrical grid in the region, supporting economic development and providing a stable power supply to communities along the north coast.`,
             "I'm a farmer, I need water to grow crops or blueberries - What kind of information is required ?": `As a farmer applying for a water permit to grow crops, you will need to provide specific information about your agricultural activities and water usage. This may include details about the type of crops you plan to grow, the size of your farm, the irrigation methods you intend to use, and the estimated volume of water required for your agricultural operations. Additionally, you may need to provide information about your farm's location, soil type, and any existing water sources on your property. It's important to accurately describe your water needs to ensure compliance with regulations and sustainable water management practices. \n For more detailed guidance, please refer to the Water Licence Application Guide for Agricultural Use on the FrontCounter BC website. \n Please click on Apply without BCeID to continue.`,
+            "I have fee exemption":"fee-exemption-yes",
             "I'm a federal government employee, working with Marine research in Comox valley": "fed-employeecase",
             "How will I know if I have an existing water licence ?" : "Since you’re applying for the first time, I’m assuming the answer is no.",
             "Yes I am applying for first time, I don't have any existing water licence":"select-no-existing-license",
             "I'm probably using ground water": "select-ground-water",
-            "I would like to know the approximate cost for  irrigation services on 2 ha of land based on an estimated usage of 10 m³ of water per day in summer months.": `It will cost approximately around $250.00. Shall I add this information to your application form?`,
-            "Yes, please add this calculation to this application form.": "add-purpose-calc",
+            "I would like to know the approximate cost for  irrigation services on 2 ha of land based on an estimated usage of 10 m³ of water per day in summer months": `It will cost approximately around $250.00. Shall I add this information to your application form?`,
+            "Yes, please add this calculation to this application form": "add-purpose-calc",
             "Am I eligible for a water licence ?": `Just let me know if any of these apply to you: \n
                                                         Are you the owner or entitled of possession of land where the water will be used? \n
                                                         Are you a municipality, regional district, improvement or development district, or water user's community? \n
@@ -228,6 +229,13 @@
                         groundWater.click();
                         overriddenAnswer = `Thanks! I have selected ground water for you`;
                        
+                    }
+
+                    if (overriddenAnswer === 'fee-exemption-yes') { 
+
+                        let feeexemptionyes = document.querySelector('input[type="radio"][data-id="V1IsEligibleForFeeExemption"][value="Yes"]');
+                        feeexemptionyes.click();
+                        overriddenAnswer = `I have selected Yes since you have fee exemption. Could you please specify the reason for your fee exemption?`;
                     }
 
 
