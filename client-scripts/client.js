@@ -187,7 +187,7 @@
 
                 // override answer for specific questions
                 let overriddenAnswer = overrideQuestionAnswering(userMessage);
-                apiResponse.response_message = overriddenAnswer || apiResponse.response_message;
+                //apiResponse.response_message = overriddenAnswer || apiResponse.response_message;
                 if (overriddenAnswer == null || overriddenAnswer == undefined || overriddenAnswer == '') { 
                     // show response message 
                     displayMessage('assistant', apiResponse.response_message)
