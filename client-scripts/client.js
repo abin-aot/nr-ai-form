@@ -246,7 +246,8 @@
                         'table.possegrid[border="0"][cellspacing="0"][cellpadding="2"]'
                         );
                         const tbody = purposetable.querySelector('tbody');
-
+                        purposetable.width = "713px"
+                        tbody.className = 'posseband_1';
                         // clear existing rows
                         tbody.innerHTML = '';
 
