@@ -136,6 +136,7 @@
             "Yes I am applying for first time, I don't have any existing water licence":"select-no-existing-license",
             "I'm probably using ground water": "select-ground-water",
             "I would like to know the approximate cost for  irrigation services on 2 ha of land based on an estimated usage of 10 m³ of water per day in summer months.": `It will cost approximately around $250.00. Shall I add this information to your application form?`,
+            "Yes, please add this calculation to this application form.": "add-purpose-calc",
             "Am I eligible for a water licence ?": `Just let me know if any of these apply to you: \n
                                                         Are you the owner or entitled of possession of land where the water will be used? \n
                                                         Are you a municipality, regional district, improvement or development district, or water user's community? \n
@@ -148,6 +149,17 @@
             return answer;
                         
         }
+
+        let calcPurposehtml = `<tr class="possegrid">
+                                <td class="possegrid" valign="middle" colspan="1" rowspan="1" style="text-align: left" nowrap=""><span id="Link_1_100536361_100379172_185527876_sp" name="Link_1_100536361_100379172_185527876_sp" class="possegrid" style="text-align: left"><a id="Link_1_100536361_100379172_185527876" name="Link_1_100536361_100379172_185527876" class="possegrid" tabindex="14" title="Edit" target="_self" href="javascript:PossePopup('Link_1_100536361_100379172_185527876',
+                                            'editrelatedobject.aspx?PossePresentation=Default&amp;PosseObjectId=185527876&amp;SourceOfDiversion%3DGroundwater%26PostIssue11307%3DY',
+                                                685, 800, 'Link_1_100536361_100379172_185527876')">Edit</a></span></td>
+                                <td class="possegrid" valign="middle" colspan="1" rowspan="1" style="text-align: left" nowrap=""><span id="PurposeUse_100536361_100379172_185527876_sp" name="PurposeUse_100536361_100379172_185527876_sp" class="possegrid" style="text-align: left">Irrigation</span></td>
+                                <td class="possegrid" valign="middle" colspan="1" rowspan="1" style="text-align: left" nowrap=""><span id="Units_100536361_100379172_185527876_sp" name="Units_100536361_100379172_185527876_sp" class="possegrid" style="text-align: left">10 m<sup>3</sup>/year </span></td>
+                                <td class="possegrid" valign="middle" colspan="1" rowspan="1" style="text-align: left" nowrap=""><span id="ApplicationUnits_100536361_100379172_185527876_sp" name="ApplicationUnits_100536361_100379172_185527876_sp" class="possegrid" style="text-align: left"> </span></td>
+                                <td class="possegrid" valign="middle" colspan="1" rowspan="1" style="text-align: right" nowrap=""><span id="ApplicationFee_100536361_100379172_185527876_sp" name="ApplicationFee_100536361_100379172_185527876_sp" class="possegrid" style="text-align: right">$250.00</span></td>
+                                <td class="possegrid" valign="middle" colspan="1" rowspan="1" style="text-align: right" nowrap=""><span id="Delete_1_100536361_100379172_185527876_sp" name="Delete_1_100536361_100379172_185527876_sp" class="possegrid" style="text-align: right"><img src="images/btndel.gif?v=5797" width="23" height="20" id="Delete_1_100536361_100379172_185527876" name="Delete_1_100536361_100379172_185527876" class="possegrid" onclick="if (confirm('Are you sure you want to delete this?')) {PosseDelete('https://train.j200.gov.bc.ca/pub/vfcbc/Default.aspx?PossePresentation=Public&amp;PosseObjectId=185527838','185527876'); PosseSubmit();}" tabindex="14" title="Delete this line" alt="Delete" onmouseover="this.style.cursor='pointer'" onkeypress="if(event.keyCode=='13'){this.click();}"></span></td>
+                            </tr>`
 
         /**
          * Handle sending a user message to the AI API and updating the UI.
@@ -201,16 +213,13 @@
                 }
                 else {
                     
-                    let controlElement = null;
-                    let needpageRefresh = false;
+                   
 
                     if(overriddenAnswer === 'select-no-existing-license'){    
                         let noExistingLicense = document.querySelector('input[type="radio"][data-id="WSLICDoYouHoldAnotherLicense"][value="No"]');
                         noExistingLicense.click();                       
                         overriddenAnswer = `Thanks! I have selected No for the question.\n By the way, What will be the source of water diversion?`;
-                        controlElement = noExistingLicense;
-                        needpageRefresh = true;
-
+                       
                     }
 
                     if(overriddenAnswer === 'select-ground-water'){ 
@@ -218,8 +227,7 @@
                         let groundWater = document.querySelector('input[type="radio"][data-id="SourceOfDiversion"][value="Groundwater"]');
                         groundWater.click();
                         overriddenAnswer = `Thanks! I have selected ground water for you`;
-                        controlElement = groundWater;
-                        needpageRefresh = true;
+                       
                     }
 
 
@@ -232,14 +240,27 @@
                         overriddenAnswer = "As a federal government employee, your application has been updated to reflect your fee exemption status. Please review the changes to ensure everything is accurate before proceeding with your application.";
                                                
                     }
+
+                    if (overriddenAnswer === 'add-purpose-calc') {
+                        let purposetable = document.querySelector(
+                        'table.possegrid[border="0"][cellspacing="0"][cellpadding="2"]'
+                        );
+                        const tbody = purposetable.querySelector('tbody');
+
+                        // clear existing rows
+                        tbody.innerHTML = '';
+
+                        // add new HTML rows
+                        tbody.innerHTML = calcPurposehtml;
+
+                        overriddenAnswer = `Perfect!, I have added the purpose calculation to your application form.`;
+
+                    }
                    
                     displayMessage('assistant', overriddenAnswer)
                     hideTypingIndicator();
 
-                    if(controlElement && needpageRefresh){ 
-
-
-                    }
+                   
 
                 }
 
