@@ -126,7 +126,7 @@
             "Whats a BCEID and Why should I use it ?": `A BCeID (British Columbia electronic ID) is a free, secure online authentication service that provides individuals, businesses, and organizations with a single user ID and password to securely access numerous online services offered by the BC government. It simplifies the login process and enhances security for users accessing government services online like Water Permit Applications.
                                                         \n For this application you can apply without BCeID.
                                                         \n Do you have any other questions?`,
-            "Does the Water sustainibility act apply to me ?":  `You dont need to worry about the Water Sustainability Act. I will guide you step by step as we progress through this application process. Any context related to the Act will be considered automatically while we fill out the application, so you won’t need to read the entire document yourself.\n Could you tell me why you're applying for a  water licence?`,                                           
+            "Does the Water sustainability  act apply to me ?":  `You dont need to worry about the Water Sustainability Act. I will guide you step by step as we progress through this application process. Any context related to the Act will be considered automatically while we fill out the application, so you won’t need to read the entire document yourself.\n Could you tell me why you're applying for a  water licence?`,                                           
             "I dont have a BCeID account, Can I still apply for Water Permit?": `Yes, you can still apply for a Water Permit without a BCeID account. \n Please click on Apply without BCeID.`,
             "What should I do here ?":"Please follow instructions to validate that you are not a human.",
             "What is North Coast Transmission Line?": `For the purposes of this POC we would answer No to all questions. But, The North Coast Transmission Line (NCTL) is a major electrical transmission project in British Columbia, Canada. It involves the construction of a high-voltage transmission line that spans approximately 335 kilometers, connecting the Northwest Transmission Line near Terrace to the existing transmission system near Prince Rupert. The NCTL is designed to enhance the reliability and capacity of the electrical grid in the region, supporting economic development and providing a stable power supply to communities along the north coast.`,
@@ -137,7 +137,7 @@
                                                         Are you a municipality, regional district, improvement or development district, or water user's community? \n
                                                         Do you represent the BC or Canadian government, a commission or board managing Crown land, a water district, or BC Hydro? \n
                                                         Or are you applying as an agent for someone who qualifies? \n \n
-                                                        If any of these sound like you, just say Yes and I can fill in the form for you `
+                                                        If any of these sound like you, just say I’m eligible and I can fill in the form for you `
             }; 
             // Check if the userMessage matches any question in the object
             const answer = questionsAndAnswers[userMessage];
