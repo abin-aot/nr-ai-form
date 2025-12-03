@@ -133,6 +133,8 @@
             "I'm a farmer, I need water to grow crops or blueberries - What kind of information is required?": `As a farmer applying for a water permit to grow crops, you will need to provide specific information about your agricultural activities and water usage. This may include details about the type of crops you plan to grow, the size of your farm, the irrigation methods you intend to use, and the estimated volume of water required for your agricultural operations. Additionally, you may need to provide information about your farm's location, soil type, and any existing water sources on your property. It's important to accurately describe your water needs to ensure compliance with regulations and sustainable water management practices. \n For more detailed guidance, please refer to the Water Licence Application Guide for Agricultural Use on the FrontCounter BC website. \n Please click on Apply without BCeID to continue.`,
             "I'm a federal government employee, working with Marine research in Comox valley": "fed-employeecase",
             "How will I know if I have an existing water license ?" : "Do you currently hold a water licence? Since you’re applying for the first time, I’m assuming the answer is no.",
+            "Yes, I don't any existing water license":"select-no-existing-license",
+            "I'm probably using ground water": "select-ground-water",
             "Am I eligible for a water license ?": `Just let me know if any of these apply to you: \n
                                                         Are you the owner or entitled of possession of land where the water will be used? \n
                                                         Are you a municipality, regional district, improvement or development district, or water user's community? \n
@@ -198,6 +200,21 @@
                 }
                 else {
                       
+                    if(overriddenAnswer === 'select-no-existing-license'){    
+                        let noExistingLicense = document.querySelector('[data-id="WSLICDoYouHoldAnotherLicense"]');
+                        noExistingLicense[1].checked = true;
+                        overriddenAnswer = `Thanks! I have selected No for the question.\n By the way, What will be the source of water diversion?`;
+
+                    }
+
+                    if(overriddenAnswer === 'select-ground-water'){ 
+
+                        let groundWater = document.querySelector('[data-id="SourceOfDiversion"]');
+                        groundWater[1].checked = true;
+                        overriddenAnswer = `Thanks! I have selected ground water for you`;
+                    }
+
+
                     if (overriddenAnswer === 'fed-employeecase') {
                         const categories = document.querySelector('[data-id="V1FeeExemptionCategory"]');
                         categories.selectedIndex = 2;
