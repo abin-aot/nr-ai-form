@@ -223,62 +223,62 @@
                 }
                 else {
                     
-                   
+                   setTimeout(()=>{
 
-                    if(overriddenAnswer === 'select-no-existing-license'){    
-                        let noExistingLicense = document.querySelector('input[type="radio"][data-id="WSLICDoYouHoldAnotherLicense"][value="No"]');
-                        noExistingLicense.click();                       
-                        overriddenAnswer = `Thanks! I have selected No for the question.\n By the way, What will be the source of water diversion?`;
-                       
-                    }
+                        if(overriddenAnswer === 'select-no-existing-license'){    
+                            let noExistingLicense = document.querySelector('input[type="radio"][data-id="WSLICDoYouHoldAnotherLicense"][value="No"]');
+                            noExistingLicense.click();                       
+                            overriddenAnswer = `Thanks! I have selected No for the question.\n By the way, What will be the source of water diversion?`;
+                        
+                        }
 
-                    if(overriddenAnswer === 'select-ground-water'){ 
+                        if(overriddenAnswer === 'select-ground-water'){ 
 
-                        let groundWater = document.querySelector('input[type="radio"][data-id="SourceOfDiversion"][value="Groundwater"]');
-                        groundWater.click();
-                        overriddenAnswer = `Thanks! I have selected ground water for you. Also, Could you please describe the purpose?`;
-                       
-                    }
+                            let groundWater = document.querySelector('input[type="radio"][data-id="SourceOfDiversion"][value="Groundwater"]');
+                            groundWater.click();
+                            overriddenAnswer = `Thanks! I have selected ground water for you. Also, Could you please describe the purpose?`;
+                        
+                        }
 
-                    if (overriddenAnswer === 'fee-exemption-yes') { 
+                        if (overriddenAnswer === 'fee-exemption-yes') { 
 
-                        let feeexemptionyes = document.querySelector('input[type="radio"][data-id="V1IsEligibleForFeeExemption"][value="Yes"]');
-                        feeexemptionyes.click();
-                        overriddenAnswer = `I have selected Yes since you have fee exemption. Could you please specify the reason for your fee exemption?`;
-                    }
+                            let feeexemptionyes = document.querySelector('input[type="radio"][data-id="V1IsEligibleForFeeExemption"][value="Yes"]');
+                            feeexemptionyes.click();
+                            overriddenAnswer = `I have selected Yes since you have fee exemption. Could you please specify the reason for your fee exemption?`;
+                        }
 
 
-                    if (overriddenAnswer === 'fed-employeecase') {
-                        const categories = document.querySelector('[data-id="V1FeeExemptionCategory"]');
-                        categories.selectedIndex = 3;
+                        if (overriddenAnswer === 'fed-employeecase') {
+                            const categories = document.querySelector('[data-id="V1FeeExemptionCategory"]');
+                            categories.selectedIndex = 3;
 
-                        const textfeeexception = document.querySelector('[data-id="V1FeeExemptionSupportingInfo"]');
-                        textfeeexception.value = "I live in Komok's First Nation band, and need to use my land for agriculture";
-                        overriddenAnswer = "Your application has been updated to reflect your fee exemption status. Please review the changes to ensure everything is accurate before proceeding with your application.";
-                                               
-                    }
+                            const textfeeexception = document.querySelector('[data-id="V1FeeExemptionSupportingInfo"]');
+                            textfeeexception.value = "I live in Komok's First Nation band, and need to use my land for agriculture";
+                            overriddenAnswer = "Your application has been updated to reflect your fee exemption status. Please review the changes to ensure everything is accurate before proceeding with your application.";
+                                                
+                        }
 
-                    if (overriddenAnswer === 'add-purpose-calc') {
-                        let purposetable = document.querySelector(
-                        'table.possegrid[border="0"][cellspacing="0"][cellpadding="2"]'
-                        );
-                        const tbody = purposetable.querySelector('tbody');
-                        purposetable.width = "713px"
-                        tbody.className = 'posseband_1';
-                        // clear existing rows
-                        tbody.innerHTML = '';
+                        if (overriddenAnswer === 'add-purpose-calc') {
+                            let purposetable = document.querySelector(
+                            'table.possegrid[border="0"][cellspacing="0"][cellpadding="2"]'
+                            );
+                            const tbody = purposetable.querySelector('tbody');
+                            purposetable.width = "713px"
+                            tbody.className = 'posseband_1';
+                            // clear existing rows
+                            tbody.innerHTML = '';
 
-                        // add new HTML rows
-                        tbody.innerHTML = calcPurposehtml;
+                            // add new HTML rows
+                            tbody.innerHTML = calcPurposehtml;
 
-                        overriddenAnswer = `Perfect!, I have added the purpose calculation to your application form.`;
+                            overriddenAnswer = `Perfect!, I have added the purpose calculation to your application form.`;
 
-                    }
-                   
-                    displayMessage('assistant', overriddenAnswer)
-                    hideTypingIndicator();
-
-                   
+                        }
+                    
+                        displayMessage('assistant', overriddenAnswer)
+                        hideTypingIndicator();
+                }
+                   , 4000);
 
                 }
 
