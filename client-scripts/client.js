@@ -135,7 +135,7 @@
             "I live in Komok's First Nation band, and need to use my land for agriculture": "fed-employeecase",
             "How will I know if I have an existing water licence ?" : "Since you’re applying for the first time, I’m assuming the answer is no.",
             "Yes I am applying for first time, I don't have any existing water licence":"select-no-existing-license",
-            "I'm probably using ground water": "select-ground-water",
+            "I'm planning to pump water from a nearby well, I assume its ground water": "select-ground-water",
             "I want to irrigate 2 hectares of blueberries on my land in Comox valley. I am planning to pump water from a nearby well, and use sprinklers and drip irrigation, from June to September": `Suggested Pre-fill: \n
                                                                                                                                                                             Please review and update any details if needed:\n
                                                                                                                                                                             - Purpose : Irrigation\n
@@ -236,7 +236,7 @@
 
                             let groundWater = document.querySelector('input[type="radio"][data-id="SourceOfDiversion"][value="Groundwater"]');
                             groundWater.click();
-                            overriddenAnswer = `Thanks! I have selected ground water for you. Also, Could you please describe the purpose?`;
+                            overriddenAnswer = `Yes, you are right, its ground water and I have selected ground water for you. Also, Could you please describe the purpose for water use?`;
                         
                         }
 
