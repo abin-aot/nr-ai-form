@@ -227,7 +227,7 @@
 
                         let groundWater = document.querySelector('input[type="radio"][data-id="SourceOfDiversion"][value="Groundwater"]');
                         groundWater.click();
-                        overriddenAnswer = `Thanks! I have selected ground water for you`;
+                        overriddenAnswer = `Thanks! I have selected ground water for you. Also, Could you please describe the purpose?`;
                        
                     }
 
