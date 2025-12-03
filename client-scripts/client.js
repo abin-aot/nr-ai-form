@@ -201,16 +201,16 @@
                 else {
                       
                     if(overriddenAnswer === 'select-no-existing-license'){    
-                        let noExistingLicense = document.querySelector('[data-id="WSLICDoYouHoldAnotherLicense"]');
-                        noExistingLicense[1].checked = true;
+                        let noExistingLicense = document.querySelector('input[type="radio"][data-id="WSLICDoYouHoldAnotherLicense"][value="No"]');
+                        noExistingLicense.checked = true;                       
                         overriddenAnswer = `Thanks! I have selected No for the question.\n By the way, What will be the source of water diversion?`;
 
                     }
 
                     if(overriddenAnswer === 'select-ground-water'){ 
 
-                        let groundWater = document.querySelector('[data-id="SourceOfDiversion"]');
-                        groundWater[1].checked = true;
+                        let groundWater = document.querySelector('input[type="radio"][data-id="SourceOfDiversion"][value="Groundwater"]');
+                        groundWater.checked = true;
                         overriddenAnswer = `Thanks! I have selected ground water for you`;
                     }
 
