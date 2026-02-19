@@ -177,7 +177,7 @@ function getCurrentFormStepFromDom() {
     if (!progressBar) return null;
 
     const activeLi =
-        progressBar.querySelector('li.cumbs_on') ||
+        progressBar.querySelector('li.crumbs_on') ||
         progressBar.querySelector('li.active') ||
         progressBar.querySelector('li[aria-current="step"]');
 
