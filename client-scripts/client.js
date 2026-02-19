@@ -154,6 +154,40 @@ function extractThreadIdFromResponse(response) {
     return null;
 }
 
+function normalizeStepLabelToStepValue(label) {
+    const cleaned = String(label || '').replace(/\u00a0/g, ' ').trim();
+    if (!cleaned) return null;
+
+    if (/^complete$/i.test(cleaned)) {
+        return FormSteps.STEP10_COMPLETE;
+    }
+
+    const numberedStep = cleaned.match(/^(\d+)\s*-\s*(.+)$/);
+    if (numberedStep) {
+        const stepNumber = numberedStep[1];
+        const stepName = numberedStep[2].trim().replace(/\s+/g, '-');
+        return `step${stepNumber}-${stepName}`;
+    }
+
+    return null;
+}
+
+function getCurrentFormStepFromDom() {
+    const progressBar = document.getElementById('progressbar');
+    if (!progressBar) return null;
+
+    const activeLi =
+        progressBar.querySelector('li.cumbs_on') ||
+        progressBar.querySelector('li.active') ||
+        progressBar.querySelector('li[aria-current="step"]');
+
+    if (!activeLi) return null;
+
+    const labelFromText = (activeLi.textContent || '').trim();
+    const labelFromTitle = (activeLi.getAttribute('title') || '').trim();
+    return normalizeStepLabelToStepValue(labelFromText) || normalizeStepLabelToStepValue(labelFromTitle);
+}
+
 
 function injectStyles() {
     if (document.getElementById('wp-chat-styles')) return;
@@ -500,8 +534,9 @@ function initBot() {
         showTyping(true);
 
         try {
-            const step1 = FormSteps.STEP1_INTRODUCTION;
-            const response = await invokeOrchestrator(text, step1, sessionId);
+            const currentStep = getCurrentFormStepFromDom() || FormSteps.STEP1_INTRODUCTION;
+            console.log(`Invoking orchestrator with sessionId=${sessionId}, step=${currentStep}, query=${text}`);
+            const response = await invokeOrchestrator(text, currentStep, sessionId);
             const serverThreadId = extractThreadIdFromResponse(response);
             if (serverThreadId && serverThreadId !== sessionId) {
                 migrateChatHistory(sessionId, serverThreadId);
