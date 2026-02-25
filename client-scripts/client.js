@@ -674,7 +674,7 @@ function initBot() {
     closeBtn.addEventListener('click', toggleChat);
 
     async function sendMessage() {
-        const text = chatInput.value.trim();
+        let text = chatInput.value.trim();
         if (!text) return;
 
         appendMessage('user', text);
