@@ -685,6 +685,12 @@ function initBot() {
         try {
             const currentStep = getCurrentFormStepFromDom() || FormSteps.step1introduction || 'step1introduction';
             console.log(`Invoking orchestrator with sessionId=${sessionId}, step=${currentStep}, query=${text}`);
+
+            if(currentStep == FormSteps.step0bot)
+            {
+                text = `Human verification form query : ${text}`;
+            }
+
             const response = await invokeOrchestrator(text, currentStep, sessionId);
             applyFormSupportSuggestionsFromResponse(response);
             const serverThreadId = extractThreadIdFromResponse(response);
