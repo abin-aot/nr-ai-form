@@ -3,7 +3,7 @@
 
 
 //-------------------------- Services Starts ---------------------------//
-const ORCHESTRATOR_API_URL ="https://nr-ai-form-test-api-fd-beb0ajayctfxd9dv.a02.azurefd.net/invoke" //"http://localhost:8002/invoke";
+const ORCHESTRATOR_API_URL = "http://localhost:8002/invoke";
 
 
 async function invokeOrchestrator(query, step_number, session_id = null) {
