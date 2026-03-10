@@ -685,14 +685,19 @@ function initBot() {
 
             <div class="wp-chat-messages" id="wp-chat-messages">
                 <div class="wp-chat-welcome">
-                    <p>How I can help \n
-                    
-                      I'm an AI assistant here to support you with your water licence application. I can explain terms, clarify what information is needed, and suggest relevant resources based on what you share.\n
-
-                      Disclaimer \n
-                      I don't provide legal advice and I'm not a substitute for guidance from FrontCounter BC staff or qualified professionals. You're responsible for ensuring your submission is accurate and complete. Please don't share personal information. Your questions may be stored to help improve this service. By using this assistant, you acknowledge and accept these terms.
-                    
-                    </p>
+                    <div class="wp-chat-welcome">
+                        <p><strong>How I can help</strong></p>
+                        <p>I'm an AI assistant here to support you with your water licence application. 
+                        I can explain terms, clarify what information is needed, and suggest relevant resources based on what you share.
+                        </p>
+                        <p><strong>Disclaimer</strong></p>
+                        <p>I don't provide legal advice and I'm not a substitute for guidance from FrontCounter 
+                        BC staff or qualified professionals. You're responsible for ensuring your submission 
+                        is accurate and complete. Please don't share personal information. 
+                        Your questions may be stored to help improve this service.
+                        By using this assistant, you acknowledge and accept these terms.
+                        </p>
+                    </div>
                 </div>
             </div>
 
