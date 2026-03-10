@@ -245,7 +245,8 @@ function normalizeComparableValue(value) {
 function tryParseJson(value) {
     if (typeof value !== 'string') return value;
     try {
-        return JSON.parse(value);
+        cleaned = value.replace(/```json|```/g, '').trim();
+        return JSON.parse(cleaned);
     } catch {
         return null;
     }
