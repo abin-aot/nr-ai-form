@@ -513,6 +513,10 @@ function injectStyles() {
         .wp-chat-welcome p {
             margin: 0;
         }
+            
+        .wp-chat-welcome p {
+            margin: 0 0 12px 0;
+        }
 
         .wp-chat-message {
             display: flex;
