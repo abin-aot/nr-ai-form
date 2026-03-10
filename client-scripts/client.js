@@ -477,6 +477,10 @@ function injectStyles() {
             font-weight: 600;
         }
 
+        .wp-chat-title span {
+            padding-top: 12px
+        }
+
         .wp-chat-title-image {
             display: block;
             height: 32px;
@@ -618,6 +622,7 @@ function injectStyles() {
             background: white;
             border-radius: 0 0 12px 12px;
             display: flex;
+            align-items: flex-end;
             gap: 12px;
         }
 
@@ -629,6 +634,14 @@ function injectStyles() {
             font-size: 14px;
             outline: none;
             transition: border-color 0.2s;
+            min-height: 48px;
+            max-height: 140px;
+            resize: none;
+            overflow-y: auto;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: inherit;
         }
 
         .wp-chat-input:focus {
