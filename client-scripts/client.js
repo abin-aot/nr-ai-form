@@ -741,7 +741,7 @@ function initBot() {
             </div>
 
             <div class="wp-chat-input-container">
-                <input type="text" class="wp-chat-input" id="wp-chat-input" placeholder="Type your message..." />
+                <textarea rows="5" cols="40" class="wp-chat-input" id="wp-chat-input" placeholder="Type your message..." />
                 <button class="wp-chat-send" id="wp-chat-send-btn" type="button">
                 <span>➤</span>
                 </button>
