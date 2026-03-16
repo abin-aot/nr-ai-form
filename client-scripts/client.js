@@ -7,7 +7,7 @@ const ORCHESTRATOR_API_URL = "https://nraif-671b-test-api.ambitiousmeadow-949bd8
 
  let livestockPurposehtml = `<tr class="possegrid">
                                 <td class="possegrid" valign="middle" colspan="1" rowspan="1" style="text-align: left" nowrap=""><span id="PurposeEdit_100536361_100379172_173010900_sp" name="PurposeEdit_100536361_100379172_173010900_sp" class="possegrid" style="text-align: left"><a data-id="PurposeEdit_Livestock and Animal_200_m3/year_173010900" id="PurposeEdit_100536361_100379172_173010900" name="PurposeEdit_100536361_100379172_173010900" class="possegrid" tabindex="14" title="Edit" target="_self" href="javascript:PossePopup('PurposeEdit_100536361_100379172_173010900',
-                                        'editrelatedobject.aspx?PossePresentation=Default&amp;PosseObjectId=173011528&amp;SourceOfDiversion%3DSurface%20water%26PostIssue11307%3DY',
+                                        'editrelatedobject.aspx?PossePresentation=Default&amp;PosseObjectId=173010900&amp;SourceOfDiversion%3DSurface%20water%26PostIssue11307%3DY',
                                             685, 800, 'PurposeEdit_100536361_100379172_173010900')">Edit</a></span></td>
                                 <td class="possegrid" valign="middle" colspan="1" rowspan="1" style="text-align: left" nowrap=""><span id="PurposeUse_100536361_100379172_185527876_sp" name="PurposeUse_100536361_100379172_185527876_sp" class="possegrid" style="text-align: left">Livestock and Animal</span></td>
                                 <td class="possegrid" valign="middle" colspan="1" rowspan="1" style="text-align: left" nowrap=""><span id="Units_100536361_100379172_185527876_sp" name="Units_100536361_100379172_185527876_sp" class="possegrid" style="text-align: left">{water_usage} m<sup>3</sup>/year </span></td>
@@ -378,15 +378,6 @@ function applyPurposeTableSuggestion(suggestion) {
 
     const waterUsage = String(suggestion.suggestedvalue ?? '').trim();
     const renderedHtml = livestockPurposehtml.replace('{water_usage}', waterUsage);
-    const existingRow = purposeTable.querySelector('[data-id="PurposeEdit_Livestock and Animal_200_m3/year_173010900"]')?.closest('tr');
-
-    if (existingRow) {
-        const unitsCell = existingRow.querySelector('[id^="Units_"]');
-        if (unitsCell) {
-            unitsCell.innerHTML = `${waterUsage} m<sup>3</sup>/year `;
-            return true;
-        }
-    }
 
     const insertTarget =
         purposeTable.tagName?.toLowerCase() === 'table'
