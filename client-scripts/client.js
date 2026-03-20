@@ -237,17 +237,7 @@ function getStep3SubstepFromPaneHeader() {
     return step3PaneHeaderMap[paneHeaderText] || null;
 }
 
-function getPreferredPaneHeaderText() {
-    const subHeader = document.querySelector('span[data-id="subheadername"]');
-    const subHeaderText = normalizeComparableValue(subHeader?.textContent || '');
-    if (subHeaderText) return subHeaderText;
 
-    const stepHeader = document.querySelector('span[data-id="stepheadername"]');
-    const stepHeaderText = normalizeComparableValue(stepHeader?.textContent || '');
-    if (stepHeaderText) return stepHeaderText;
-
-    return null;
-}
 
 function getCurrentFormStepFromPaneHeaders() {
     const paneHeaderText = getPreferredPaneHeaderText();
