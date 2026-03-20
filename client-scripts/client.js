@@ -238,21 +238,6 @@ function getStep3SubstepFromPaneHeader() {
 }
 
 
-
-function getCurrentFormStepFromPaneHeaders() {
-    const paneHeaderText = getPreferredPaneHeaderText();
-    if (!paneHeaderText) return null;
-
-    const paneHeaderStepMap = {
-        introduction: FormSteps.step1introduction,
-        eligibility: FormSteps.step2eligibility,        
-        governmentandfirstnationfeeexemptionrequest: FormSteps.STEP3_TECHNICAL_INFORMATION_FEE_EXEMPTION_REQUEST,
-        waterdiversion: FormSteps.STEP3_TECHNICAL_INFORMATION_WATER_DIVERSION,
-        addapurpose : FormSteps.STEP3_ADDPURPOSE_CONSOLIDATED
-    };
-    return paneHeaderStepMap[paneHeaderText] || null;
-}
-
 function getPreferredPaneHeaderText() {
     const subHeader = document.querySelector('span[data-id="subheadername"]');
     const subHeaderText = normalizeComparableValue(subHeader?.textContent || '');
